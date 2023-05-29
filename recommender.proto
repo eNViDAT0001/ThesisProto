@@ -1,4 +1,6 @@
 syntax = "proto3";
+package recommender;
+option go_package = "/.";
 
 service RecommenderBaseComment{
  rpc AddComment(CommentReq) returns (NonQueryResponse) {}
