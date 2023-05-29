@@ -1,12 +1,12 @@
 syntax = "proto3";
-package recommender;
+package main;
 option go_package = "/.";
 
 service RecommenderBaseComment{
- rpc AddComment(CommentReq) returns (NonQueryResponse) {}
- rpc UpdateComment(CommentReq) returns (NonQueryResponse) {}
- rpc DeleteComment(DeleteCommentReq) returns (NonQueryResponse) {}
- rpc LisRecommendedProductIDsByUserID(RecommentReq) returns (RecommentRes) {}
+ rpc AddComment (CommentReq) returns (NonQueryResponse);
+ rpc UpdateComment (CommentReq) returns (NonQueryResponse);
+ rpc DeleteComment (DeleteCommentReq) returns (NonQueryResponse);
+ rpc LisRecommendedProductIDsByUserID (RecommentReq) returns (RecommentRes);
 }
 message RecommentReq{
     int32 user_id = 1;
