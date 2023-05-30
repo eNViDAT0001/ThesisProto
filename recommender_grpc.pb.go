@@ -20,8 +20,6 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	RecommenderBaseComment_AddComment_FullMethodName                       = "/main.RecommenderBaseComment/AddComment"
-	RecommenderBaseComment_UpdateComment_FullMethodName                    = "/main.RecommenderBaseComment/UpdateComment"
-	RecommenderBaseComment_DeleteComment_FullMethodName                    = "/main.RecommenderBaseComment/DeleteComment"
 	RecommenderBaseComment_LisRecommendedProductIDsByUserID_FullMethodName = "/main.RecommenderBaseComment/LisRecommendedProductIDsByUserID"
 )
 
@@ -30,8 +28,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecommenderBaseCommentClient interface {
 	AddComment(ctx context.Context, in *CommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error)
-	UpdateComment(ctx context.Context, in *CommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error)
-	DeleteComment(ctx context.Context, in *DeleteCommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error)
 	LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommentReq, opts ...grpc.CallOption) (*RecommentRes, error)
 }
 
@@ -52,24 +48,6 @@ func (c *recommenderBaseCommentClient) AddComment(ctx context.Context, in *Comme
 	return out, nil
 }
 
-func (c *recommenderBaseCommentClient) UpdateComment(ctx context.Context, in *CommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error) {
-	out := new(NonQueryResponse)
-	err := c.cc.Invoke(ctx, RecommenderBaseComment_UpdateComment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *recommenderBaseCommentClient) DeleteComment(ctx context.Context, in *DeleteCommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error) {
-	out := new(NonQueryResponse)
-	err := c.cc.Invoke(ctx, RecommenderBaseComment_DeleteComment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *recommenderBaseCommentClient) LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommentReq, opts ...grpc.CallOption) (*RecommentRes, error) {
 	out := new(RecommentRes)
 	err := c.cc.Invoke(ctx, RecommenderBaseComment_LisRecommendedProductIDsByUserID_FullMethodName, in, out, opts...)
@@ -84,8 +62,6 @@ func (c *recommenderBaseCommentClient) LisRecommendedProductIDsByUserID(ctx cont
 // for forward compatibility
 type RecommenderBaseCommentServer interface {
 	AddComment(context.Context, *CommentReq) (*NonQueryResponse, error)
-	UpdateComment(context.Context, *CommentReq) (*NonQueryResponse, error)
-	DeleteComment(context.Context, *DeleteCommentReq) (*NonQueryResponse, error)
 	LisRecommendedProductIDsByUserID(context.Context, *RecommentReq) (*RecommentRes, error)
 	mustEmbedUnimplementedRecommenderBaseCommentServer()
 }
@@ -96,12 +72,6 @@ type UnimplementedRecommenderBaseCommentServer struct {
 
 func (UnimplementedRecommenderBaseCommentServer) AddComment(context.Context, *CommentReq) (*NonQueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddComment not implemented")
-}
-func (UnimplementedRecommenderBaseCommentServer) UpdateComment(context.Context, *CommentReq) (*NonQueryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateComment not implemented")
-}
-func (UnimplementedRecommenderBaseCommentServer) DeleteComment(context.Context, *DeleteCommentReq) (*NonQueryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteComment not implemented")
 }
 func (UnimplementedRecommenderBaseCommentServer) LisRecommendedProductIDsByUserID(context.Context, *RecommentReq) (*RecommentRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LisRecommendedProductIDsByUserID not implemented")
@@ -138,42 +108,6 @@ func _RecommenderBaseComment_AddComment_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecommenderBaseComment_UpdateComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RecommenderBaseCommentServer).UpdateComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RecommenderBaseComment_UpdateComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecommenderBaseCommentServer).UpdateComment(ctx, req.(*CommentReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RecommenderBaseComment_DeleteComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteCommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RecommenderBaseCommentServer).DeleteComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RecommenderBaseComment_DeleteComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecommenderBaseCommentServer).DeleteComment(ctx, req.(*DeleteCommentReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RecommenderBaseComment_LisRecommendedProductIDsByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RecommentReq)
 	if err := dec(in); err != nil {
@@ -202,14 +136,6 @@ var RecommenderBaseComment_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddComment",
 			Handler:    _RecommenderBaseComment_AddComment_Handler,
-		},
-		{
-			MethodName: "UpdateComment",
-			Handler:    _RecommenderBaseComment_UpdateComment_Handler,
-		},
-		{
-			MethodName: "DeleteComment",
-			Handler:    _RecommenderBaseComment_DeleteComment_Handler,
 		},
 		{
 			MethodName: "LisRecommendedProductIDsByUserID",
