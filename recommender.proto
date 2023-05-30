@@ -4,12 +4,12 @@ option go_package = "/.";
 
 service RecommenderBaseComment{
  rpc AddComment (CommentReq) returns (NonQueryResponse);
- rpc LisRecommendedProductIDsByUserID (RecommentReq) returns (RecommentRes);
+ rpc LisRecommendedProductIDsByUserID (RecommendReq) returns (RecommendRes);
 }
-message RecommentReq{
+message RecommendReq{
     int32 user_id = 1;
 }
-message RecommentRes{
+message RecommendRes{
     repeated int32 product_id = 1;
 }
 message CommentReq{

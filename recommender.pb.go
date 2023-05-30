@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type RecommentReq struct {
+type RecommendReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -28,8 +28,8 @@ type RecommentReq struct {
 	UserId int32 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 }
 
-func (x *RecommentReq) Reset() {
-	*x = RecommentReq{}
+func (x *RecommendReq) Reset() {
+	*x = RecommendReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_recommender_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -37,13 +37,13 @@ func (x *RecommentReq) Reset() {
 	}
 }
 
-func (x *RecommentReq) String() string {
+func (x *RecommendReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RecommentReq) ProtoMessage() {}
+func (*RecommendReq) ProtoMessage() {}
 
-func (x *RecommentReq) ProtoReflect() protoreflect.Message {
+func (x *RecommendReq) ProtoReflect() protoreflect.Message {
 	mi := &file_recommender_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,19 +55,19 @@ func (x *RecommentReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RecommentReq.ProtoReflect.Descriptor instead.
-func (*RecommentReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use RecommendReq.ProtoReflect.Descriptor instead.
+func (*RecommendReq) Descriptor() ([]byte, []int) {
 	return file_recommender_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RecommentReq) GetUserId() int32 {
+func (x *RecommendReq) GetUserId() int32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type RecommentRes struct {
+type RecommendRes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -75,8 +75,8 @@ type RecommentRes struct {
 	ProductId []int32 `protobuf:"varint,1,rep,packed,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
 }
 
-func (x *RecommentRes) Reset() {
-	*x = RecommentRes{}
+func (x *RecommendRes) Reset() {
+	*x = RecommendRes{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_recommender_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -84,13 +84,13 @@ func (x *RecommentRes) Reset() {
 	}
 }
 
-func (x *RecommentRes) String() string {
+func (x *RecommendRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RecommentRes) ProtoMessage() {}
+func (*RecommendRes) ProtoMessage() {}
 
-func (x *RecommentRes) ProtoReflect() protoreflect.Message {
+func (x *RecommendRes) ProtoReflect() protoreflect.Message {
 	mi := &file_recommender_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -102,12 +102,12 @@ func (x *RecommentRes) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RecommentRes.ProtoReflect.Descriptor instead.
-func (*RecommentRes) Descriptor() ([]byte, []int) {
+// Deprecated: Use RecommendRes.ProtoReflect.Descriptor instead.
+func (*RecommendRes) Descriptor() ([]byte, []int) {
 	return file_recommender_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RecommentRes) GetProductId() []int32 {
+func (x *RecommendRes) GetProductId() []int32 {
 	if x != nil {
 		return x.ProductId
 	}
@@ -229,9 +229,9 @@ var File_recommender_proto protoreflect.FileDescriptor
 var file_recommender_proto_rawDesc = []byte{
 	0x0a, 0x11, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x12, 0x04, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0x27, 0x0a, 0x0c, 0x52, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65,
+	0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65,
 	0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72,
-	0x49, 0x64, 0x22, 0x2d, 0x0a, 0x0c, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52,
+	0x49, 0x64, 0x22, 0x2d, 0x0a, 0x0c, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52,
 	0x65, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x5f, 0x69, 0x64,
 	0x18, 0x01, 0x20, 0x03, 0x28, 0x05, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49,
 	0x64, 0x22, 0x5c, 0x0a, 0x0a, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12,
@@ -251,8 +251,8 @@ var file_recommender_proto_rawDesc = []byte{
 	0x12, 0x4a, 0x0a, 0x20, 0x4c, 0x69, 0x73, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64,
 	0x65, 0x64, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x49, 0x44, 0x73, 0x42, 0x79, 0x55, 0x73,
 	0x65, 0x72, 0x49, 0x44, 0x12, 0x12, 0x2e, 0x6d, 0x61, 0x69, 0x6e, 0x2e, 0x52, 0x65, 0x63, 0x6f,
-	0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6d, 0x61, 0x69, 0x6e, 0x2e,
-	0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x42, 0x04, 0x5a, 0x02,
+	0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x6d, 0x61, 0x69, 0x6e, 0x2e,
+	0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x42, 0x04, 0x5a, 0x02,
 	0x2f, 0x2e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
@@ -270,16 +270,16 @@ func file_recommender_proto_rawDescGZIP() []byte {
 
 var file_recommender_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_recommender_proto_goTypes = []interface{}{
-	(*RecommentReq)(nil),     // 0: main.RecommentReq
-	(*RecommentRes)(nil),     // 1: main.RecommentRes
+	(*RecommendReq)(nil),     // 0: main.RecommendReq
+	(*RecommendRes)(nil),     // 1: main.RecommendRes
 	(*CommentReq)(nil),       // 2: main.CommentReq
 	(*NonQueryResponse)(nil), // 3: main.NonQueryResponse
 }
 var file_recommender_proto_depIdxs = []int32{
 	2, // 0: main.RecommenderBaseComment.AddComment:input_type -> main.CommentReq
-	0, // 1: main.RecommenderBaseComment.LisRecommendedProductIDsByUserID:input_type -> main.RecommentReq
+	0, // 1: main.RecommenderBaseComment.LisRecommendedProductIDsByUserID:input_type -> main.RecommendReq
 	3, // 2: main.RecommenderBaseComment.AddComment:output_type -> main.NonQueryResponse
-	1, // 3: main.RecommenderBaseComment.LisRecommendedProductIDsByUserID:output_type -> main.RecommentRes
+	1, // 3: main.RecommenderBaseComment.LisRecommendedProductIDsByUserID:output_type -> main.RecommendRes
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -294,7 +294,7 @@ func file_recommender_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_recommender_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecommentReq); i {
+			switch v := v.(*RecommendReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -306,7 +306,7 @@ func file_recommender_proto_init() {
 			}
 		}
 		file_recommender_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecommentRes); i {
+			switch v := v.(*RecommendRes); i {
 			case 0:
 				return &v.state
 			case 1:

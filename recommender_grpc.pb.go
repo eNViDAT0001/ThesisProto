@@ -28,7 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecommenderBaseCommentClient interface {
 	AddComment(ctx context.Context, in *CommentReq, opts ...grpc.CallOption) (*NonQueryResponse, error)
-	LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommentReq, opts ...grpc.CallOption) (*RecommentRes, error)
+	LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommendReq, opts ...grpc.CallOption) (*RecommendRes, error)
 }
 
 type recommenderBaseCommentClient struct {
@@ -48,8 +48,8 @@ func (c *recommenderBaseCommentClient) AddComment(ctx context.Context, in *Comme
 	return out, nil
 }
 
-func (c *recommenderBaseCommentClient) LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommentReq, opts ...grpc.CallOption) (*RecommentRes, error) {
-	out := new(RecommentRes)
+func (c *recommenderBaseCommentClient) LisRecommendedProductIDsByUserID(ctx context.Context, in *RecommendReq, opts ...grpc.CallOption) (*RecommendRes, error) {
+	out := new(RecommendRes)
 	err := c.cc.Invoke(ctx, RecommenderBaseComment_LisRecommendedProductIDsByUserID_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -62,7 +62,7 @@ func (c *recommenderBaseCommentClient) LisRecommendedProductIDsByUserID(ctx cont
 // for forward compatibility
 type RecommenderBaseCommentServer interface {
 	AddComment(context.Context, *CommentReq) (*NonQueryResponse, error)
-	LisRecommendedProductIDsByUserID(context.Context, *RecommentReq) (*RecommentRes, error)
+	LisRecommendedProductIDsByUserID(context.Context, *RecommendReq) (*RecommendRes, error)
 	mustEmbedUnimplementedRecommenderBaseCommentServer()
 }
 
@@ -73,7 +73,7 @@ type UnimplementedRecommenderBaseCommentServer struct {
 func (UnimplementedRecommenderBaseCommentServer) AddComment(context.Context, *CommentReq) (*NonQueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddComment not implemented")
 }
-func (UnimplementedRecommenderBaseCommentServer) LisRecommendedProductIDsByUserID(context.Context, *RecommentReq) (*RecommentRes, error) {
+func (UnimplementedRecommenderBaseCommentServer) LisRecommendedProductIDsByUserID(context.Context, *RecommendReq) (*RecommendRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LisRecommendedProductIDsByUserID not implemented")
 }
 func (UnimplementedRecommenderBaseCommentServer) mustEmbedUnimplementedRecommenderBaseCommentServer() {
@@ -109,7 +109,7 @@ func _RecommenderBaseComment_AddComment_Handler(srv interface{}, ctx context.Con
 }
 
 func _RecommenderBaseComment_LisRecommendedProductIDsByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecommentReq)
+	in := new(RecommendReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ func _RecommenderBaseComment_LisRecommendedProductIDsByUserID_Handler(srv interf
 		FullMethod: RecommenderBaseComment_LisRecommendedProductIDsByUserID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecommenderBaseCommentServer).LisRecommendedProductIDsByUserID(ctx, req.(*RecommentReq))
+		return srv.(RecommenderBaseCommentServer).LisRecommendedProductIDsByUserID(ctx, req.(*RecommendReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }

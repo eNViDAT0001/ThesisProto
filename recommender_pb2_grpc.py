@@ -21,8 +21,8 @@ class RecommenderBaseCommentStub(object):
                 )
         self.LisRecommendedProductIDsByUserID = channel.unary_unary(
                 '/main.RecommenderBaseComment/LisRecommendedProductIDsByUserID',
-                request_serializer=recommender__pb2.RecommentReq.SerializeToString,
-                response_deserializer=recommender__pb2.RecommentRes.FromString,
+                request_serializer=recommender__pb2.RecommendReq.SerializeToString,
+                response_deserializer=recommender__pb2.RecommendRes.FromString,
                 )
 
 
@@ -51,8 +51,8 @@ def add_RecommenderBaseCommentServicer_to_server(servicer, server):
             ),
             'LisRecommendedProductIDsByUserID': grpc.unary_unary_rpc_method_handler(
                     servicer.LisRecommendedProductIDsByUserID,
-                    request_deserializer=recommender__pb2.RecommentReq.FromString,
-                    response_serializer=recommender__pb2.RecommentRes.SerializeToString,
+                    request_deserializer=recommender__pb2.RecommendReq.FromString,
+                    response_serializer=recommender__pb2.RecommendRes.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -93,7 +93,7 @@ class RecommenderBaseComment(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/main.RecommenderBaseComment/LisRecommendedProductIDsByUserID',
-            recommender__pb2.RecommentReq.SerializeToString,
-            recommender__pb2.RecommentRes.FromString,
+            recommender__pb2.RecommendReq.SerializeToString,
+            recommender__pb2.RecommendRes.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
